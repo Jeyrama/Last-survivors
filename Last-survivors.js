@@ -38,3 +38,23 @@ function lastSurvivors(str) {
 }
 
 // or
+
+function lastSurvivors(str) {
+  const chars = [...str];
+  function getNextChar(char) {
+    if (char === 'z') return 'a';
+    const charCode = char.charCodeAt(0);
+    return String.fromCharCode(charCode + 1);
+  }
+  for (let i = 0; i < chars.length; i++) {
+    for (let j = i + 1; j < chars.length; j++) {
+      if (chars[i] === chars[j]) {
+        chars[i] = getNextChar(chars[i]);
+        chars.splice(j, 1);
+        i = -1;
+        break;
+      }
+    }
+  }
+  return chars.join('');
+}
