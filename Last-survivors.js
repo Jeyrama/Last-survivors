@@ -36,3 +36,5 @@ function lastSurvivors(str) {
   
   return str;
 }
+
+// or
