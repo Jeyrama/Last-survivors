@@ -22,3 +22,17 @@ Notes:
 
 
 // Solution
+
+function lastSurvivors(str) {
+  
+  const alpha = 'abcdefghijklmnopqrstuvwxyz';
+  
+  let next = str;
+  
+  do {
+    str = next;
+    next = str.replace(/([a-z])(.*?)\1/g, (_, a, b) => alpha[(alpha.indexOf(a) + 1) % 26] + b);
+  } while (str !== next)
+  
+  return str;
+}
